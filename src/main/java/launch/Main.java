@@ -20,7 +20,7 @@ public class Main {
 
         // Jos "PORT" löytyy ympäristömuuttujista, käytetään sitä. Muussa tapauksessa
         // käytetään porttia 8080:
-        int httpPort = Integer.valueOf(System.getenv().getOrDefault("PORT", "8080"));
+        int httpPort = Integer.valueOf(System.getenv().getOrDefault("PORT", "5050"));
 
         Tomcat tomcat = createServer(httpPort);
 
@@ -47,7 +47,7 @@ public class Main {
 
         // HUOM! Jos haluat, että palvelin käynnistää itsensä uudelleen muutettuasi
         // tiedostoja, poista kommentti seuraavalta riviltä:
-        // webApp.setReloadable(true);
+        webApp.setReloadable(true);
 
         // Määritellään sovelluksemme resurssien sijainnit:
         WebResourceRoot resources = new StandardRoot(webApp);

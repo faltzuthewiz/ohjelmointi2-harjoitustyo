@@ -19,7 +19,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         // Jos "PORT" löytyy ympäristömuuttujista, käytetään sitä. Muussa tapauksessa
-        // käytetään porttia 8080:
+        // käytetään porttia 5050
         int httpPort = Integer.valueOf(System.getenv().getOrDefault("PORT", "5050"));
 
         Tomcat tomcat = createServer(httpPort);

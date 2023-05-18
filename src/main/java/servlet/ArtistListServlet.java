@@ -21,6 +21,9 @@ public class ArtistListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		List<Artist> artists = this.dao.getAllArtists();
+		
+		req.setAttribute("artists", artists);
+		req.getRequestDispatcher("/WEB-INF/artistList.jsp").forward(req, resp);
 		// Haetaan kaikki artistit, haetaan ne JSP-sivulle
 		resp.getWriter().println(artists);
 	}

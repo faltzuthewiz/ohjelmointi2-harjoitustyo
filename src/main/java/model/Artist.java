@@ -13,4 +13,12 @@ public class Artist {
 	public String getName() {
 		return this.name;
 	}
+	
+	public long getId() {
+		return id;
+	}
+	
+	public Artist(String name) {
+		this.name = name;
+	}
 }

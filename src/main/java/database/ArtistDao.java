@@ -42,4 +42,25 @@ public class ArtistDao {
 		}
 		return allArtists;
 	}
+	
+	public boolean addArtist(Artist newArtist) {
+		String addValue = "INSERT INTO Artist (Name) VALUES (?);";
+		
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet results = null;
+		
+		try {
+			connection = db.connect();
+			statement = connection.prepareStatement(addValue);
+			statement.setString(1, newArtist.getName());
+			return true;
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			this.db.close(connection, statement, results);
+		}
+		
+		return false;
+	}
 }

@@ -9,6 +9,10 @@ public class Artist {
 		this.id = id;
 		this.name = name;
 	}
+	
+	public Artist(String name) {
+		this.name = name;
+	}
 
 	public String getName() {
 		return this.name;
@@ -18,7 +22,7 @@ public class Artist {
 		return id;
 	}
 	
-	public Artist(String name) {
-		this.name = name;
+	public void setId(long id) {
+		this.id = id;
 	}
 }

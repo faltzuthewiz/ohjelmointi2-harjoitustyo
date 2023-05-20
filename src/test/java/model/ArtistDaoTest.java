@@ -17,6 +17,8 @@ public class ArtistDaoTest {
 		List<Artist> artists = this.dao.getAllArtists();
 		
 		assertEquals("A Cor Do Som", artists.get(0).getName());
+		
+		
 	}
 
 	@Test

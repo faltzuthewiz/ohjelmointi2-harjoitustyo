@@ -24,8 +24,15 @@ public class ArtistListServlet extends HttpServlet {
 		
 		req.setAttribute("artists", artists);
 		req.getRequestDispatcher("/WEB-INF/artistList.jsp").forward(req, resp);
-		// Haetaan kaikki artistit, haetaan ne JSP-sivulle
-		resp.getWriter().println(artists);
 	}
-
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String artistName = req.getParameter("name");
+		
+		Artist newArtist = new Artist(artistName);
+		this.dao.addArtist(newArtist);
+		
+		resp.sendRedirect("/");
+	}
 }

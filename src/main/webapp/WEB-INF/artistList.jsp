@@ -18,7 +18,9 @@
 	<ol>
 		<c:forEach items="${ artists }" var="artist">
 			<li>
+				<a href="<c:out value = "/albums?ArtistId=${ artist.getId() }" />" >
 				<c:out value="${ artist.getName() }"></c:out>
+				</a>
 			</li>
 		</c:forEach>
 	</ol>

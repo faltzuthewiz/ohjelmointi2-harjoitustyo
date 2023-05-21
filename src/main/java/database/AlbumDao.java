@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Album;
-import model.Artist;
 
 public class AlbumDao {
 	

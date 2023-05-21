@@ -71,4 +71,16 @@ public class ArtistDao {
 		
 		return false;
 	}
+	
+	public Artist getArtist(long id) {
+		
+		List<Artist> allArtists = this.getAllArtists();
+		for (Artist artist : allArtists) {
+			if (id == artist.getId()) {
+				return artist;
+			}
+		}
+		
+		return null;
+	}
 }

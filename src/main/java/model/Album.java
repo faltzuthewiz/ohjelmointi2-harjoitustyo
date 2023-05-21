@@ -4,12 +4,10 @@ public class Album {
 	
 	private long albumId;
 	private String albumTitle;
-	private Artist artistId;
 	
-	public Album(long albumId, String albumTitle, Artist artistId) {
+	public Album(long albumId, String albumTitle) {
 		this.albumId = albumId;
 		this.albumTitle = albumTitle;
-		this.artistId = artistId;
 	}
 	
 	public String getAlbumTitle() {

@@ -21,28 +21,34 @@ public class ArtistDaoTest {
 		
 	}
 
-	@Test
-	public void testLastItemIsZecaPagodinho() {
-		List<Artist> artists = this.dao.getAllArtists();
-		
-		assertEquals("Zeca Pagodinho", artists.get(artists.size() - 1).getName());
-	}
+	
+	  @Test public void testLastItemIsZecaPagodinho() {
+		  
+		  List<Artist> artists = this.dao.getAllArtists();
+	  
+		  assertEquals("Zeca Pagodinho", artists.get(artists.size() - 1).getName()); 
+	  }
+	  
+	  @Test public void testNewArtistIsAdded() { 
+		  
+		  Artist newArtist = new Artist("Kissa"); boolean success = this.dao.addArtist(newArtist);
+	  
+		  assertTrue(success);
+	  }
+	  
+	  @Test public void testNewArtistIdIsSet() { 
+		  
+		  Artist newArtist = new Artist("The Beatles");
+		  this.dao.addArtist(newArtist);
+	  
+		  assertTrue(newArtist.getId() > 0); 
+	  }
+	 
 	
 	@Test
-	public void testNewArtistIsAdded() {
-		Artist newArtist = new Artist("Kissa");
-		boolean success = this.dao.addArtist(newArtist);
+	public void testFiftArtistIdsNameIsAliceIsChains() {
+		Artist fiftArtist = this.dao.getArtist(5);
 		
-		assertTrue(success);
+		assertEquals("Alice In Chains", fiftArtist.getName());
 	}
-
-	@Test
-	public void testNewArtistIdIsSet() {
-		Artist newArtist = new Artist("The Beatles");
-		this.dao.addArtist(newArtist);
-		
-		assertTrue(newArtist.getId() > 0);
-	}
-	
-
 }

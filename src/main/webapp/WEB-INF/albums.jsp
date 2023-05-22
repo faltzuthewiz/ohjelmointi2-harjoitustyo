@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Music | Albums</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css.min.css"/>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
     <h1>Albums by <c:out value="${ artistname.getName() }"></c:out></h1>

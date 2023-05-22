@@ -1,46 +1,51 @@
-# Ohjelmointi2 practice project
+# Ohjelmointi 2 practice project
 
+This Git repository contains my practice project for Haaga-Helia UAS' 'Ohjelmointi 2 (Programming 2)' course. The project uses Chinook sample database (not contained in this repository, needs to be fetched separately), Java Servlets, JSPs, Maven and [Apache Tomcat](http://tomcat.apache.org/).
 
-Tämä Git-repositorio sisältää valmiin Eclipse-projektin, jota voit käyttää Java-kielisen web-sovelluksen pohjana. Projekti on tarkoitettu pohjaksi verkkosovellusten koodaamiseen Haaga-Helian Ohjelmointi 2 -opintojaksolla. 
-
-Projektissa hyödynnetään Javan Servlet- sekä JSP-teknologioita yhdessä [Apachen Tomcat](http://tomcat.apache.org/) -sovelluspalvelimen kanssa. Projekti sisältää valmiit asetustiedostot sen tuomiseksi Eclipse-sovelluskehittimeen, mutta voit käyttää sitä soveltaen myös muilla kehitystyökaluilla, kuten [VS Code](https://code.visualstudio.com/) tai [IntelliJ IDEA](https://www.jetbrains.com/idea/).
-
+The project contains a list of all the artists that is contained in Chinook database. A user can post a new artist to the database by filling up a form. A user can also locate to a list of albums by selected artist by clicking the artist on the project's frontpage. The Main.java class starts the project on [http://localhost:5050](http://localhost:5050) .
 
 ## Files in the project
 
-The project has following directory structure:
+The project has a following directory structure:
 
 ```tree
 embedded-tomcat
-│   pom.xml
-│   README.md
-│
-├───src
-│   ├───main
-│   │   ├───java
-│   │   │   ├───launch
-│   │   │   │       Main.java
-│   │   │   │
-│   │   │   └───servlet
-│   │   │           IndexServlet.java
-│   │   │
-│   │   ├───resources
-│   │   └───webapp
-│   │       ├───styles
-│   │       │       demo.css
-│   │       │
-│   │       └───WEB-INF
-│   │               index.jsp
-│   │
-│   └───test
-│       ├───java
-│       │   ├───servlet
-│       │   │       IndexServletTest.java
-│       │   │
-│       │   └───testserver
-│       │           TestServer.java
-│       │
-│       └───resources
+.
+|-- README.md
+|-- lib
+|   `-- sqlite-jdbc-3.41.2.1.jar
+|-- pom.xml
+`-- src
+    |-- main
+    |   |-- java
+    |   |   |-- database
+    |   |   |   |-- AlbumDao.java
+    |   |   |   |-- ArtistDao.java
+    |   |   |   `-- Database.java
+    |   |   |-- launch
+    |   |   |   `-- Main.java
+    |   |   |-- model
+    |   |   |   |-- Album.java
+    |   |   |   `-- Artist.java
+    |   |   `-- servlet
+    |   |       |-- AlbumServlet.java
+    |   |       `-- ArtistListServlet.java
+    |   |-- resources
+    |   `-- webapp
+    |       |-- WEB-INF
+    |       |   |-- albums.jsp
+    |       |   `-- artistList.jsp
+    |       `-- styles
+    `-- test
+        |-- java
+        |   |-- model
+        |   |   |-- AlbumDaoTest.java
+        |   |   `-- ArtistDaoTest.java
+        |   |-- servlet
+        |   `-- testserver
+        |       `-- TestServer.java
+        `-- resources
+
 ```
 
 
@@ -49,17 +54,25 @@ Location                                | Usage
 ----------------------------------------|---------------------
 [README.md](README.md)                                                  | This file
 [pom.xml](pom.xml)                                                      | "[Project Object Model](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)" file for eq. to define dependencies
-[src/main/java](src/main/java)                                          | Java-pakettien juurihakemisto
-[src/main/resources](src/main/resources)                                | Hakemisto esimerkiksi .properties-tiedostoille
-[src/main/java/launch/Main.java](src/main/java/launch/Main.java)        | Luokka Tomcat-palvelimen käynnistämiseksi
-[src/main/java/servlet/IndexServlet.java](src/main/java/servlet/IndexServlet.java) | Esimerkki HTTP-liikennettä tukevasta Java-luokasta
-[src/main/webapp](src/main/webapp)                                      | Hakemisto staattisille tiedostoille (css, kuvat, JS)
-[src/main/webapp/WEB-INF](src/main/webapp/WEB-INF)                      | Erityinen hakemisto, jonne on estetty suora pääsy selaimilta ¹
-[src/main/webapp/WEB-INF/index.jsp](src/main/webapp/WEB-INF/index.jsp)  | IndexServlet-luokan käyttämä sivupohja
-[src/test/java](src/test/java)                                          | JUnit-testiluokkien pakettien juurihakemisto
-[src/test/java/servlet/IndexServletTest.java](src/test/java/servlet/IndexServletTest.java)  | IndexServlet-luokan JUnit-testit
-[src/test/java/testserver/TestServer.java](src/test/java/testserver/TestServer.java)  | Apuluokka palvelimen testaamiseksi
-[src/test/resources](src/test/resources)                                | Hakemisto esimerkiksi testien .properties-tiedostoille
+[src/main/java](src/main/java)                                          | Root directory for Java packages
+[src/main/resources](src/main/resources)                                | A directory for eg. .properties files
+[src/main/java/launch/Main.java](src/main/java/launch/Main.java)        | A class which starts Tomcat server
+[src/main/webapp](src/main/webapp)                                      | Directory for JS (could be used to storage CSS and pictures, too)
+[src/main/webapp/WEB-INF](src/main/webapp/WEB-INF)                      | A special directory to which direct access from browsers is blocked ¹
+[src/test/java](src/test/java)                                          | A root directory for JUnit test packages
+[src/test/java/testserver/TestServer.java](src/test/java/testserver/TestServer.java)  | Helper class for testing the server
+[src/test/resources](src/test/resources)                                | A directory for eg. .properties files for tests
+[src/main/database/AlbumDao.java](src/main/database/AlbumDao.java)      | A Java class for album-related methods (eg. get all albums from certain artist listed in the database)
+[src/main/database/ArtistDao.java](src/main/database/ArtistDao.java)    | A Java class for artist-related methods (eg. get all artists from database)
+[src/main/database/Database.java](src/main/database/Database.java)      | A Java class for maintaining database connection
+[src/main/model/Album.java](src/main/model/Album.java)                  | Album object
+[src/main/model/Artist.java](src/main/model/Artist.java)                | Artist object
+[src/main/servlet/AlbumServlet.java](src/main/servlet/AlbumServlet.java) | A servlet that takes the artistId as a request and provides albums based on that id.
+[src/main/servlet/ArtistListServlet.java](src/main/servlet/ArtistListServlet.java)   | A servlet that requests all the artist information provided
+[src/main/test/java/model/AlbumDaoTest.java](src/main/test/java/model/AlbumDaoTest.java)  | A JUnit test to check if the Album method is working
+[src/main/test/java/model/ArtistDaoTest.java](src/main/test/java/model/ArtistDaoTest.java)   | A JUnit test to check if the Artist methods are working 
+[src/main/webapp/WEB-INF/albums.jsp](src/main/webapp/WEB-INF/albums.jsp)   | Album.jsp shows a html page with the name and albums of the selected artist
+[src/main/webapp/WEB-INF/albums.jsp](src/main/webapp/WEB-INF/albums.jsp)   | Artist.jsp shows a html page with a list of all the artists and a form to add a new artist.
 
 ¹ "No file contained in the WEB-INF directory may be served directly to a client by the container. However, the contents of the WEB-INF directory are visible to servlet code..." [Java Servlet Specification Version 2.4](http://download.oracle.com/otn-pub/jcp/servlet-2.4-fr-spec-oth-JSpec/servlet-2_4-fr-spec.pdf)
 
@@ -67,51 +80,15 @@ Location                                | Usage
 
 ## Riippuvuuksien asentaminen
 
-Servlet-pohjaiset sovellukset tarvitsevat aina jonkin suoritusympäristön, joka tällä esimerkkiprojektilla on nimeltään [Tomcat](http://tomcat.apache.org/). Tomcat ja muut sovelluksen riippuvuudet on suoraviivaista määrittää projektin pom.xml-tiedostoon, jolloin Eclipsen Maven-plugin asentaa riippuvuudet automaattisesti.
+The project is launched by running Main.java file located in [`src/main/java/launch/Main.java`](src/main/java/launch/Main.java). The project is launched now on [http://localhost:5050](http://localhost:5050) .
 
-Kun riippuvuudet on asennettu, on Tomcat-palvelinohjelmisto käytettävissä projektissasi ja voit ryhtyä kehittämään verkkosovelluksia Javalla.
+Successfull launch looks about this in Eclipse's console: 
 
-*Tämän projektin `pom.xml` on rakennettu noudattaen Heroku-pilvialustan esimerkkiä ["Create a Java Web Application Using Embedded Tomcat"](https://devcenter.heroku.com/articles/create-a-java-web-application-using-embedded-tomcat).*
-
-
-## Palvelinohjelmiston käynnistäminen
-
-Tomcat-palvelin voidaan käynnistää lukuisilla eri tavoilla, esimerkiksi erillisenä ohjelmana tai Eclipsen hallinnoimana palvelimena. Voimme käyttää sitä myös ohjelmallisesti, eli kirjoittamalla tavallista Java-koodia.
-
-Tämä yksinkertaistettu esimerkki näyttää, miten uusi Tomcat-olio luodaan, miten sen käyttämä portti määritellään ja miten palvelin käynnistetään odottamaan HTTP-pyyntöjä:
-
-```java
-import org.apache.catalina.startup.Tomcat;
-
-public class Main {
-
-    public static void main(String[] args) throws Exception {
-
-        // Luodaan uusi palvelinolio:
-        Tomcat tomcat = new Tomcat();
-
-        // Asetetaan kuunneltava portti (http://localhost:8080)
-        tomcat.setPort(8080);
-
-        // ...muiden asetusten määrittely...
-
-        // Palvelimen käynnistäminen:
-        tomcat.start();
-        tomcat.getServer().await();
-    }
-}
-```
-
-## Main.java-tiedosto
-
-Tässä projektissa Tomcatin käynnistämiseksi ja sen asetusten asettamiseksi tarvittavat komennot on kirjoitettu valmiiksi tiedostoon [`src/main/java/launch/Main.java`](src/main/java/launch/Main.java). Voit käynnistää Tomcat-palvelimen suorittamalla tämän tiedoston aivan kuten olet tähänkin asti suorittanut Java-ohjelmiasi Eclipsessä.
-
-Ohjelman suoritus tulostaa lokitietoja Eclipsen konsoliin, ja onnistunut käynnistys näyttää pääpiirteittäin tältä:
 
 ```log
 configuring app with basedir: C:\workspace\embedded-tomcat\.\src\main\webapp
 tammik. 28, 2020 10:13:05 AP. org.apache.coyote.AbstractProtocol init
-INFO: Initializing ProtocolHandler ["http-nio-8080"]
+INFO: Initializing ProtocolHandler ["http-nio-5050"]
 tammik. 28, 2020 10:13:05 AP. org.apache.tomcat.util.net.NioSelectorPool getSharedSelector
 INFO: Using a shared selector for servlet write/read
 tammik. 28, 2020 10:13:05 AP. org.apache.catalina.core.StandardService startInternal
@@ -125,27 +102,17 @@ INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug 
 tammik. 28, 2020 10:13:06 AP. org.apache.catalina.util.SessionIdGeneratorBase createSecureRandom
 WARNING: Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [308] milliseconds.
 tammik. 28, 2020 10:13:06 AP. org.apache.coyote.AbstractProtocol start
-INFO: Starting ProtocolHandler ["http-nio-8080"]
+INFO: Starting ProtocolHandler ["http-nio-5050"]
 ```
 
-Voit nyt navigoida selaimellasi osoitteeseen [http://localhost:8080](http://localhost:8080)! Mikäli kaikki toimii, näet sivun joka näyttää tältä:
 
-### Staattiset tiedostot
+### CSS
 
-Edellä esitellyssä sivupohjassa hyödynnetään ulkoista CSS-tiedostoa:
+The following [CSS Framework by yegor256](https://github.com/yegor256/tacit) is used in the project. 
 
 ```html
-<link rel="stylesheet" href="/styles/demo.css">
+ <link rel="stylesheet" href="tacit-css.min.css"/>
 ```
 
-Tämä tiedosto sijaitsee projektin hakemistossa `src/main/webapp`, jonka alla olevat tiedostot tarjotaan selaimelle staattisina tiedostoina (poikkeuksena `WEB-INF`).
-
-Selaimen pyytäessä osoitetta http://localhost:8080/styles/demo.css Tomcat tarjoaa vastauksesi CSS-tiedostomme. Vastaavalla tavalla voisimme asettaa saataville myös kuvat ja JavaScript-tiedostot sijoittamalla ne `src/main/webapp` hakemiston alle.
-
-
-
 ---
-
-Tämän oppimateriaalin on kehittänyt Teemu Havulinna ja se on lisensoitu [Creative Commons BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/) -lisenssillä. 
-
-
+The original project base is created by Teemu Havulinna and it is licenced under [Creative Commons BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/)

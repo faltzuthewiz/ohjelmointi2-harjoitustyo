@@ -78,7 +78,7 @@ Location                                | Usage
 
 
 
-## Riippuvuuksien asentaminen
+## Main.java
 
 The project is launched by running Main.java file located in [`src/main/java/launch/Main.java`](src/main/java/launch/Main.java). The project is launched now on [http://localhost:5050](http://localhost:5050) .
 

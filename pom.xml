@@ -18,7 +18,7 @@
 		<junit.jupiter.version>5.9.2</junit.jupiter.version>
 		
 		<!-- lisää nämä rivit: -->
-	    <sqlite.driver.version>3.41.2.1</sqlite.driver.version>
+	    <sqlite.driver.version>3.41.2.2</sqlite.driver.version>
 	    <jstl.api.version>1.2</jstl.api.version>
 
 		<!-- Projektin merkistökoodaus -->

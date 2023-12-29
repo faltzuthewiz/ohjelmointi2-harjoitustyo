@@ -10,7 +10,7 @@
 
 	<properties>
 		<!-- Tomcatin versionumero -->
-		<tomcat.version>8.5.93</tomcat.version>
+		<tomcat.version>8.5.96</tomcat.version>
 
 		<!-- Javan versionumero -->
 		<maven.compiler.target>11</maven.compiler.target>

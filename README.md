@@ -12,6 +12,9 @@ The project has a following directory structure:
 embedded-tomcat
 .
 |-- README.md
+`-- screenshots
+    |-- ohjelmointi2-all-artists.PNG
+    |-- ohjelmointi2-artistpage.png
 |-- lib
 |   `-- sqlite-jdbc-3.41.2.1.jar
 |-- pom.xml
@@ -76,7 +79,9 @@ Location                                | Usage
 
 ¹ "No file contained in the WEB-INF directory may be served directly to a client by the container. However, the contents of the WEB-INF directory are visible to servlet code..." [Java Servlet Specification Version 2.4](http://download.oracle.com/otn-pub/jcp/servlet-2.4-fr-spec-oth-JSpec/servlet-2_4-fr-spec.pdf)
 
-
+## Screenshots
+![Alt text](https://raw.githubusercontent.com/faltzuthewiz/ohjelmointi2-harjoitustyo/master/screenshots/ohjelmointi2-all-artists.PNG "a form to add a new artist and a numbered list of all artists.")
+![Alt text](https://raw.githubusercontent.com/faltzuthewiz/ohjelmointi2-harjoitustyo/master/screenshots/ohjelmointi2-artistpage.png "an example artist page. Shows artist name 'Queen' and three of their albums.")
 
 ## Main.java
 

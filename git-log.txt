@@ -1,0 +1,18 @@
+11fc9f5 (HEAD -> master, origin2/master) Merge remote-tracking branch 'origin2/master'
+4629601 updating readme
+0df089b Update README.md
+2b574d1 Merge remote-tracking branch 'origin2/master'
+ce0df8a Deleted unused files, added CSS
+ac72e1a Update Readme
+c2bec1f Update README.md
+f5dfdca Created album page feature
+dc452b8 Added getArtist method, AlbumDao + test, changed Album constructor
+85dc69b Created Album class
+1e57b57 Forgot to stage all changes last time
+f8004fd Fixed addArtist, added a form to artistList, deleted unused index-page
+2e315f5 Added ArtistDaoTest and addArtist method to ArtistDao
+cb20bb1 Added dependencies, artistList-page
+0f6b790 Added DB class, modified ArtistDao
+709e385 Added Artist, ArtistDao
+4dc1f5d Update .project
+6c9dd13 Initial commit
